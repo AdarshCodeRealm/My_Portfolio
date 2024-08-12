@@ -4,6 +4,7 @@ import bgImage from "../assets/bg.webp"
 function heroSection() {
   return (
     <div
+      id="heroSection"
       className=" w-screen  sm:h-screen flex-col bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
@@ -26,10 +27,30 @@ function heroSection() {
               Hi, my name is
               <span className="text-[#5918DF]"> Adarsh Ramgirwar</span>
             </h2>
-            <h2 className="font-semibold  mt-6 text-white">i <span className="font-custom17 font-medium">build</span> and develop webApps</h2>
+            <h2 className="font-semibold  mt-6 text-white">
+              i <span className="font-custom17 font-medium">build</span> and
+              develop webApps
+            </h2>
             <h6 className="text-[#988E8B]  font-semibold pt-16 text-xl ">
               Let me show You...
             </h6>
+            <button className="cursor-pointer mt-5 mb-10 text-lg flex justify-between bg-gray-800 px-4 items-center py-2 rounded-full text-white tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-[150px]">
+              Resume
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="w-5 h-5 animate-bounce"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                ></path>
+              </svg>
+            </button>
           </div>
           <div className="flex flex-wrap sm:absolute sm:bottom-10   items-center overflow-auto w-full  ">
             <img

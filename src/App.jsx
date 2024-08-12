@@ -2,23 +2,45 @@ import HeroSection from "./pages/HeroSection"
 import ShowcaseSection from "./pages/ShowcaseSection"
 import AboutSection from "./pages/AboutSection"
 import Footer from "./pages/FooterSection"
-import './index.css'
+import "./index.css"
+
+import { useState, useEffect } from "react"
+import { Link } from "react-scroll"
+import { BackToTopBtn, GitHubBtn } from "./components/elements/Buttons.jsx"
 function App() {
-  
-  const cursor = document.querySelector(".__cursor");
-  document.addEventListener("mousemove", (e) => {
-    cursor.setAttribute(
-      "style",
-      "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;"
-    );
-  });
+  const [scrollPosition, setScrollPosition] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, []) // Empty dependency array means this effect runs once on mount and cleanup on unmount
+
   return (
     <>
+      
       <HeroSection />
       <ShowcaseSection />
       <AboutSection />
       <Footer />
-      <div className="__cursor "></div>
+      <div className={`fixed bottom-4 right-10 `}>
+        {scrollPosition > 300 ? (
+          <Link to="heroSection" spy={true} smooth={true}>
+            <BackToTopBtn />
+          </Link>
+        ) : (
+          <GitHubBtn />
+        )}
+        {/* <Link to="heroSection" spy={true} smooth={true}>
+          <BackToTopBtn />
+        </Link> */}
+      </div>
     </>
   )
 }
